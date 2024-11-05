@@ -1,0 +1,228 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  grid-gap: 15px; /* Both row and column gap */
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  /* grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-template-columns: 1fr 4fr; /* Two columns with main four-times bigger than sidebar*/
+  grid-template-rows: 60px 5fr 1fr; /* Three rows where main and sidebar are five tims bigger than header and footer*/
+}
+
+/* Grid Items */
+#header {
+  grid-area: header;
+  background-color: hsl(120, 91%, 46%);
+  padding: 20px;
+  text-align: center;
+}
+
+.aside {
+  grid-area: sidebar;
+  background-color: hsl(0, 91%, 63%);
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+main {
+  grid-area: main;
+  background-color: hsl(254, 68%, 68%);
+  padding: 20px;
+  text-align: center;
+  border-radius: 20px;
+
+  display: grid; /* Enable nested grid */
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 columns for nested grid */
+  grid-template-rows: 1fr 3fr 2fr; /* 4 rows for nested grid */
+  gap: 10px; /* Gap between items in the nested grid */
+  grid-template-areas:
+    "metrix-01 metrix-02 metrix-03 metrix-04"
+    "card-01 card-02 card-03 card-03"
+    "card-04 card-04  card-03 card-03";
+}
+
+footer {
+  grid-area: footer;
+  background-color: hsl(253, 4%, 55%);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Nested Grid Items with Named Areas */
+.nested-item-01 {
+  grid-area: metrix-01;
+  background-color: hsl(296, 81%, 65%);
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.nested-item-02 {
+  grid-area: metrix-02;
+  background-color: lightblue;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.nested-item-03 {
+  grid-area: metrix-03;
+  background-color: lightpink;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.nested-item-04 {
+  grid-area: metrix-04;
+  background-color: lightgreen;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.nested-item-05 {
+  grid-area: card-01;
+  background-color: lightyellow;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.nested-item-06 {
+  grid-area: card-02;
+  background-color: lightyellow;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: -10%;
+  max-width: 80%;
+}
+
+.nested-item-07 {
+  grid-area: card-04;
+  background-color: lightyellow;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 85%;
+}
+
+.nested-item-08 {
+  grid-area: card-03;
+  background-color: lightyellow;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  margin-left: -10%;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .container {
+    grid-gap: 10px;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
+
+  main {
+    grid-template-rows: auto;
+    grid-template-areas:
+      "metrix-01 metrix-02"
+      "metrix-03 metrix-04"
+      "card-01 card-02"
+      "card-04 card-04"
+      "card-03 card-03"
+      "card-03 card-03";
+    grid-template-columns: 1fr 1fr; /* Single column for nested grid */
+  }
+
+  .nested-item-01,
+  .nested-item-02,
+  .nested-item-03,
+  .nested-item-04 {
+    height: 40px;
+  }
+
+  .nested-item-05 {
+    max-width: 100%;
+  }
+
+  .nested-item-06 {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .nested-item-07 {
+    max-width: 85%;
+  }
+
+  .nested-item-07 {
+    max-width: 100%;
+  }
+
+  .nested-item-08 {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 384px) {
+  main {
+    grid-template-rows: auto;
+    grid-template-areas:
+      "metrix-01"
+      "metrix-02"
+      "metrix-03"
+      "metrix-04"
+      "card-01"
+      "card-02"
+      "card-04"
+      "card-04"
+      "card-03"
+      "card-03"
+      "card-03"
+      " card-03";
+    grid-template-columns: 1fr; /* Single column for nested grid */
+  }
+
+  .nested-item-01,
+  .nested-item-02,
+  .nested-item-03,
+  .nested-item-04 {
+    height: 40px;
+  }
+
+  .nested-item-05 {
+    max-width: 100%;
+  }
+
+  .nested-item-06 {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .nested-item-07 {
+    max-width: 85%;
+  }
+
+  .nested-item-07 {
+    max-width: 100%;
+  }
+
+  .nested-item-08 {
+    margin-left: 0;
+  }
+}
